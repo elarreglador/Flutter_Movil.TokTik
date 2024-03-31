@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'TokTik',
         debugShowCheckedModeBanner: false,
         theme: AppTheme().getTheme(),
-        home: const DiscoverScreen(),
+        home: const DiscoverScreen(), // Pantalla principal donde se van a mostrar los videos
       ),
     );
   }
