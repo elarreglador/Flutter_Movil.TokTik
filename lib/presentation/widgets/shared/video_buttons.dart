@@ -15,8 +15,11 @@ class VideoButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _CustomIconButton(value: video.likes, iconData: Icons.favorite, iconColor: Colors.red),
-        _CustomIconButton(value: video.views, iconData: Icons.remove_red_eye_outlined)
+        _CustomIconButton(value: video.likes, iconData: Icons.favorite, iconColor: Colors.red), // like
+        const SizedBox( height: 20 ), // espaciado entre botones
+        _CustomIconButton(value: video.views, iconData: Icons.remove_red_eye_outlined), // views
+        const SizedBox( height: 20 ), // espaciado entre botones
+        const _CustomIconButton(value: 0, iconData: Icons.play_circle_outline) // play
       ],
     );
   }
@@ -40,7 +43,9 @@ class _CustomIconButton extends StatelessWidget {
       children: [
         IconButton(onPressed: () {}, 
         icon: Icon(iconData, color: color, size: 50)),
-        Text(HumanFormats.humanReadbleNumber(value.toDouble()))
+
+        if (value > 0 )
+          Text(HumanFormats.humanReadbleNumber(value.toDouble()))
       ],
     );
   }
