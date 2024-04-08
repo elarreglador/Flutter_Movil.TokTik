@@ -16,7 +16,7 @@ class VideoBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
+    return Positioned.fill( 
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: LinearGradient(
