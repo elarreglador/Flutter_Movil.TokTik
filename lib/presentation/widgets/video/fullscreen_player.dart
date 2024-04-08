@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -46,22 +47,37 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
           return const Center(child: CircularProgressIndicator( strokeWidth: 2));
         }
 
-        return AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
-          child: Stack (
-            children: [
-              VideoPlayer(controller),
-              // Gradiente
+        return GestureDetector( // Pausa al pulsar pantalla
+          onLongPressDown: (LongPressDownDetails details) {
+            if (controller.value.isPlaying) {
+              controller.pause();
+              return;
+            }
+          },
+          onLongPressUp: () {
+            controller.play(); // Play al pulsar pantalla
+          },
 
-              // Texto
-              Positioned(
-                bottom: 50,
-                left: 20,
-                child: _VideoCaption(caption: widget.caption),
-              )
-            ],
+          child: AspectRatio(
+            aspectRatio: controller.value.aspectRatio,
+            child: Stack (
+              children: [
+                // Reproductor
+                VideoPlayer(controller),
 
-          )
+                // Gradiente
+          
+          
+                // Texto
+                Positioned(
+                  bottom: 50,
+                  left: 20,
+                  child: _VideoCaption(caption: widget.caption),
+                )
+              ],
+          
+            )
+          ),
         );
       },
     );
