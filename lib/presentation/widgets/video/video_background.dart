@@ -11,7 +11,7 @@ class VideoBackground extends StatelessWidget {
       Colors.transparent,
       Colors.grey
     ],
-    this.stops = const [0.5, 1.0]
+    this.stops = const [0.75, 1.0]
     });
 
   @override
@@ -21,7 +21,7 @@ class VideoBackground extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: colors,
-            // Degradado desde la mitad (0.5) al borde
+            // Degradado desde tres cuartas (0.75) al borde
             // de la pantalla (1.0)
             stops: stops,
 
